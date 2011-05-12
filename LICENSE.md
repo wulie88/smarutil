@@ -1,7 +1,7 @@
-PHP¿ª·¢²âÊÔ¸¨Öú¿ò¼Ü
+ï»¿PHPå¼€å‘æµ‹è¯•è¾…åŠ©æ¡†æ¶
 
-°æÈ¨ÉêÃ÷
+ç‰ˆæƒç”³æ˜
 
 ---
 
-¿ò¼Ü×ñÑ­[LGPL](http://www.fsf.org/licensing/licenses/lgpl.html)Ğ­Òé£¬Äã¾Í¿ÉÒÔºÏ·¨Ê¹ÓÃ¡£
+æ¡†æ¶éµå¾ª[LGPL](http://www.fsf.org/licensing/licenses/lgpl.html)åè®®ï¼Œä½ å°±å¯ä»¥åˆæ³•ä½¿ç”¨ã€‚
