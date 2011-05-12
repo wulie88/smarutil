@@ -1,15 +1,16 @@
 <?php
-// 可以为任意文件
+// 可以为任意目录
+$application = 'app';
+
+// smarutil系统目录
 $system = 'smarutil';
 
 // 扩展名
 define('EXT', '.php');
 /*
- * When developing your application, it is highly recommended to enable notices
- * and strict warnings. Enable them by using: E_ALL | E_STRICT
+ * 开发环境，希望有完整错误提示和严格检查，请使用: E_ALL | E_STRICT
  *
- * In a production environment, it is safe to ignore notices and strict warnings.
- * Disable them by using: E_ALL ^ E_NOTICE
+ * 产品环境，忽略提示级别错误，请使用: E_ALL ^ E_NOTICE
  *
  * When using a legacy application with PHP >= 5.3, it is recommended to disable
  * deprecated notices. Disable with: E_ALL & ~E_DEPRECATED
@@ -23,11 +24,18 @@ define('DOCROOT', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
 if ( ! is_dir($system) AND is_dir(DOCROOT.$system))
 	$system = DOCROOT.$system;
 	
+if ( ! is_dir($application) AND is_dir(DOCROOT.$application))
+	$application = DOCROOT.$application;
+	
 // Define the absolute paths for configured directories
-define('SYSTEMPATH', realpath($system).DIRECTORY_SEPARATOR);
+define('APPPATH', realpath($application).DIRECTORY_SEPARATOR);
+define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
+
+// Clean up the configuration vars, because of global var
+unset($application, $system);
 
 // Bootstrap the application
-require SYSTEMPATH.'bootstrap'.EXT;
+require APPPATH.'bootstrap'.EXT;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////// 你的代码

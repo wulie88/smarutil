@@ -1,4 +1,4 @@
-<?php defined('SYSTEMPATH') or die('No direct script access.');
+<?php defined('SYSPATH') or die('No direct script access.');
 
 /**
  * 包含了大多数底层操作方法
@@ -8,7 +8,7 @@
  * - Auto-loading and transparent extension of classes
  * - Variable and path debugging
  *
- * @package    RCC
+ * @package    smartutil
  * @category   Base
  * @author     Leo Wu
  * @copyright  (c) 2008-2011 CNNL
@@ -26,7 +26,7 @@ class Core {
 	const DEVELOPMENT = 4;
 
 	// Security check that is added to all generated PHP files
-	const FILE_SECURITY = '<?php defined(\'SNOOPYPATH\') or die(\'No direct script access.\');';
+	const FILE_SECURITY = '<?php defined(\'SYSPATH\') or die(\'No direct script access.\');';
 
 	// Format of cache files: header, cache name, and data
 	const FILE_CACHE = ":header \n\n// :name\n\n:data\n";
@@ -119,7 +119,7 @@ class Core {
 	/**
 	 * @var  array   Include paths that are used to find files
 	 */
-	protected static $_paths = array(SNOOPYPATH);
+	protected static $_paths = array(APPPATH, SYSPATH);
 
 	/**
 	 * @var  array   File path cache, used when caching is true in [Kohana::init]
@@ -202,7 +202,7 @@ class Core {
 		else
 		{
 			// Use the default cache directory
-			Core::$cache_dir = SNOOPYPATH.'cache';
+			Core::$cache_dir = APPPATH.'cache';
 		}
 
 		if ( ! is_writable(Core::$cache_dir))
@@ -760,9 +760,13 @@ class Core {
 	 */
 	public static function path($file)
 	{
-		if (strpos($file, SNOOPYPATH) === 0)
+		if (strpos($file, APPPATH) === 0)
 		{
-			$file = 'SNOOPYPATH'.DIRECTORY_SEPARATOR.substr($file, strlen(SNOOPYPATH));
+			$file = 'APPPATH'.DIRECTORY_SEPARATOR.substr($file, strlen(APPPATH));
+		}
+		elseif (strpos($file, SYSPATH) === 0)
+		{
+			$file = 'SYSPATH'.DIRECTORY_SEPARATOR.substr($file, strlen(SYSPATH));
 		}
 		elseif (strpos($file, DOCROOT) === 0)
 		{
