@@ -256,10 +256,6 @@ class Debug {
 		{
 			$file = 'SYSPATH'.DIRECTORY_SEPARATOR.substr($file, strlen(SYSPATH));
 		}
-		elseif (strpos($file, MODPATH) === 0)
-		{
-			$file = 'MODPATH'.DIRECTORY_SEPARATOR.substr($file, strlen(MODPATH));
-		}
 		elseif (strpos($file, DOCROOT) === 0)
 		{
 			$file = 'DOCROOT'.DIRECTORY_SEPARATOR.substr($file, strlen(DOCROOT));
