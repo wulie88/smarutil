@@ -1,5 +1,5 @@
 <?php
-require 'smarutif.php';
+require 'smarutil.php';
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////// 你的代码
@@ -21,4 +21,4 @@ function b()
 spl_autoload_register('a');
 spl_autoload_register('b');
  
-new test();
+#new test();
